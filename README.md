@@ -4,6 +4,8 @@ Hardware:
   - Raspi 3b+ or newer with Raspbian OS
   - DVB-stick with Rafael Micro R820T tuner
   - BME280 Sensor
+  
+  
   Software:
   - rtl_433 (check on ggl)
   - python3 with some libraries (json, paho.mqtt.client, bme280)
