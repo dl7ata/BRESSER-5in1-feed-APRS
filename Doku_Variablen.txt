@@ -1,0 +1,32 @@
+Aufruf mit :
+rtl_433 -F log -F json -M iso -f 868M -R 172:vv -C si -Y squelch -F mqtt://localhost,events=7ata/wx/raw
+
+wind_ermitteln
+	erster_durchlauf_wind	Initialisierung beim 1. Durchlauf	True/False
+	time_count_10m		Timer 10 Min.				epoch-Sek.
+	time_count_5m		Timer    5 Min.				epoch-Sek.
+	wind_10m_avg		Tabelle mit Werten aus 10m, rollierend	[array]
+	wind_5m_max		Tabelle mit Werten aus  5m, rollierend	[array]
+	count_10m		Zähler Werte in Tabelle innerhalb 10 Min
+	count_5m		Zähler Werte in Tabelle innerhalb  5 Min
+
+        wind_10m		Durchschnittswerte 10m aus Tabelle, Übergabewert!
+        wind_5m			Durchschnittswerte  5m aus Tabelle, Übergabewert!
+
+regen_ermitteln
+	erster_durchlauf_regen	Initialisierung beim 1. Durchlauf	True/False
+	rain_start		Absoluter Wert aus Sensor
+	rain_mn			Übernahme aus vorhandener JSON, Startwert Regen ab Mitternacht, Übergabewert!
+	count_rain_5m		Timer 5 Min.
+	count_rain_1h		Timer 1 h.
+	count_rain_24h		Timer 24 h.
+	rain_mm_1h		Tabelle mit Werten aus 1h, rollierend	[array]
+	rain_mm_24h		Tabelle mit Werten aus 24h, rollierend	[array]
+
+meldung
+	aprs_remark		indiv. Textfeld für APRS-String
+	aprs_timer		Timer für  OS/nc-Befehl, APRS-Bake alle x Sek.
+	aprs_zeit		UTC Zeit für APRS-String
+	a_			Rechenfelder
+	v_			Stringvariable für APRS-String
+	dev_vorher		Textstring für develop

@@ -1,0 +1,17 @@
+{
+"Windrichtung": 0,
+"Temperatur": 0,
+"Temp_max_tag": -99,
+"Temp_min_tag": 99,
+"Luftfeuchtigkeit": 0,
+"Luftdruck": "n.a.",
+"Regen_1h": 0,
+"Regen_24h": 0,
+"Regen_mn": 0,
+"Wind_avg": 0,
+"Wind_gust": 0,
+"Wind_max_tag": 0,
+"Stand": "???",
+"Station": "DB0TGO-14",
+"Version": "template"
+}
