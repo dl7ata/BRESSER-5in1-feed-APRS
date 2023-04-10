@@ -28,6 +28,8 @@ Hardware:
   Step 3:   If you want to add air pressure, you need an extra sensor. A simple BME280 works fine and has to be connected on raspi via i2c (how to check on ggl).
   For that reason take wx_bme280.py - script from the repository.
   
-  I know this is a quick & dirty description and dedicated to people, who have experience in raspi projects.
+  I know this is a quick & dirty description and dedicated to people, who have some more experience in raspi projects.
+  If everyting is running, you will get a statistic like this one:
+  https://de.aprs.fi/weather/a/DB0TGO-14
   
   Good luck & 73
