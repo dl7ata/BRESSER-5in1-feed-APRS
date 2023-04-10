@@ -1,7 +1,7 @@
 # BRESSER-5in1-feed-APRS
 Hardware:
   - Weather station BRESSER 5in1
-  - Raspi 3b+ or newer with Raspbian OS
+  - Raspi 3b+ or newer with Raspbian OS and Python 3
   - DVB-stick with Rafael Micro R820T tuner
   - BME280 Sensor
   
