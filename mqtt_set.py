@@ -1,4 +1,4 @@
-# --------- indiv. PArameter für mqtt_wx.py  ------#
+# --------- indiv. Parameter für mqtt_wx.py  ------#
 aprs_call = "DB0TGO"
 aprs_pass = "16571"
 aprs_qth = "5234.15N/01313.88E"
