@@ -43,7 +43,7 @@ import subprocess
 import sys
 import mqtt_set
 
-Version = "230406.071"
+Version = "230412.001"
 mqtt_ch = "tgo"  	# Selbst erstellte JSON wird in "mqtt_topic/mqtt_ch" veröffentlicht  dev = develop, tgo = live!
 
 TOPIC = [
@@ -308,7 +308,7 @@ def meldung(data):
     "P" + str(v_rain_mn).zfill(3) + \
     "h" + str(v_hum).zfill(2) + \
     "b" + str(v_baro_Hpa).zfill(5) + \
-    mqtt_set.aprs_remark
+    mqtt_set.aprs_remark + "\n"
 
     # APRS Ausgabe nur alle x timing Min.
     aprs_diff = int(time.time()) - aprs_timer
@@ -316,10 +316,6 @@ def meldung(data):
         aprs_timer = int(time.time())
         datei_schreiben(datei_aprs, aprs_login + msg)
         cmd = "nc -v -w 5 rotate.aprs2.net 14580 <" + datei_aprs
-
-        #if mqtt_ch != "dev":			DEAKTIVIERT, daher nur Ausgabe via mqtt-aprs -> aprx, Ausgabe auf DB0TGO-14
-        #    os.system(cmd)
-        # print("CMD:", cmd, " \r\b")
 
     else:
 
@@ -329,7 +325,7 @@ def meldung(data):
         data_tx['Wind_max_tag'] = wind_max_tag
         data_tx['Luftdruck'] = v_baro_Hpa / 10
         data_tx['Stand'] = datetime.now().replace(microsecond=0).isoformat()
-        data_tx['Station'] = "DB0TGO-14"
+        data_tx['Station'] = mqtt_set.aprs_station
         data_tx['Version'] = Version
         schreiben_JSON(data_tx)
         datei_schreiben(datei_log, msg)
