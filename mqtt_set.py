@@ -6,4 +6,5 @@ mqtt_broker = "pi4"
 mqtt_topic = "7ata/wx/"
 mqtt_rx = "raw"  	# Einlesen JSON aus rtl_433
 mqtt_bme280 = "bme280"	# mqtt - Werte vom BME280
-aprs_remark = "DIY \n"
+aprs_remark = "DIY"
+aprs_station = "DB0TGO-14"
