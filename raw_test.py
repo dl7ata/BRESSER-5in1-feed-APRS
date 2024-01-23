@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# raw_test.py	Empfang des PV-JSON Strings vom PI4, Ausgabe für APRS und SVX
+# raw_test.py   Empfang des Regenwertes, Ausgabe bei Fehler in Datei
 # 04.04.2023	DL7ATA
 
 import paho.mqtt.client as mqtt
 import json
-from datetime import datetime
 import time
 import sys
 
@@ -36,20 +35,22 @@ def on_message(client, userdata, message):
     msg = str(message.payload.decode("utf-8"))
     topic = str(message.topic)
     data = json.loads(msg)
-    time_stamp = str(datetime.fromtimestamp(int(time.time())))
+    time_stamp = time.strftime("%H:%M:%S")
+    mic = data['mic']
+    sid = data['id']
     if 'rain_mm' in data:
         if data['rain_mm'] > 1000:
             text = time_stamp + " Fehler bei Regenwert:" + \
-                  str(data['rain_mm']) + str(rain_start)
+                  str(data['rain_mm']) + "\n"
             datei_schreiben(datei, text)
-            print(time_stamp, farbe_gelb, data['rain_mm'], farbe_aus)
-        print(time_stamp, farbe_gelb, data['rain_mm'], farbe_aus, "   \r\b")
+            print(time_stamp, farbe_gelb, data['rain_mm'], sid, farbe_aus, mic, " "*55)
+        print(time_stamp, farbe_gelb, data['rain_mm'], ", ID:", sid, farbe_aus, mic, "  \r\b")
 
 # START
-print(datetime.now().strftime("%H:%M:%S"),
-      "UTC. MQTT-Broker/Topic:", farbe_gelb, mqtt_broker, mqtt_topic,
+print(time.strftime("%H:%M:%S"),
+      " MQTT-Broker/Topic:", farbe_gelb, mqtt_broker, mqtt_topic,
       farbe_aus, "mit rx-ch", farbe_gelb, mqtt_rx, farbe_aus,
-      "\nPfad /tmp:", farbe_gelb, pfad_tmp, farbe_aus, "\n")
+      "\nPfad /tmp:", farbe_gelb, pfad_tmp, farbe_aus, " "*66, "\n")
 
 client = mqtt.Client()
 client.on_connect = on_connect
