@@ -18,10 +18,10 @@ Hardware:
   
   Step 2:    Running command
 
-             rtl_433 -M utc -F “mqtt://192.168.1.26,devices=sensors/rtl_433” -t sensors/rtl_433
+             rtl_433 -F json -M utc -f 868M -R 172 -C si -Y squelch | mosquitto_pub -t BRESSER/raw -l              
   
   
-  receives signal from weather sensor on 868 MHz, prepare data in ISO-format and send it as json-string via mqtt.
+  receives signal from weather sensor on 868 MHz, prepare data in ISO-format and send it as json-string via mqtt with Topic "BRESSER/raw".
   The guideline for preparing data in python script are "Positionless Weather Data" in APRS PROTOCOL REFERENCE Protocol Version 1.0 and wind is WMO calculated (avg. of 10 and 5 min. for gust). Because sensor sends only one total amount of rain, script has to do all the calculation.
   
   
