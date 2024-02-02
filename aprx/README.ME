@@ -1,0 +1,12 @@
+These files are dedicated to run on a seperate SOC in the same LAN than the mainprogram.
+It will receive the wx-json string and write an aprx compatible string to send it as a beacon string.
+Therefore the very short bash script will call the string. The script must be includes in aprx.conf as a beacon,
+Sample:
+<beacon>
+    beaconmode  aprsis
+    cycle-size  3m
+    beacon via WIDE2-1 \
+    srccall DB0TGO-14 \
+    exec <path-to-script>/APRS_wx.sh
+</beacon>
+
